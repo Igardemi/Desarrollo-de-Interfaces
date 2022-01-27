@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Alert, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Input, Item, Center, NativeBaseProvider, Button} from 'native-base';
-import Resultado from './Resultado';
+import Resultado2 from './Resultado2';
 
 export default class Calculo extends React.Component {
   constructor(props) {
@@ -13,10 +13,10 @@ export default class Calculo extends React.Component {
   }
 
   handlePes = number => {
-    this.setState({peso: number})
+    this.setState({peso: number});
   };
   handleAlt = number => {
-    this.setState({altura: number})
+    this.setState({altura: number});
   };
 
   /* clickCalcIMC() {
@@ -26,8 +26,9 @@ export default class Calculo extends React.Component {
   } */
 
   clickCalcIMC = () => {
-    this.setState({calculo: (this.state.peso/(this.state.altura*this.state.altura)).toFixed(2)})}
-  
+    let cantidad = this.state.peso/(this.state.altura*this.state.altura);
+    this.setState({calculo: cantidad.toFixed(2)});
+  };
 
   render() {
     return (
@@ -61,7 +62,10 @@ export default class Calculo extends React.Component {
             marginTop={30}>
             Calcular IMG
           </Button>
-          <Text>{(this.state.calculo>0)?<Resultado resultado={this.state.calculo} />:''}</Text>
+          <Text>
+          {this.state.calculo>0?<Resultado2 resultado={this.state.calculo}/>:'Tipo de peso'}
+          </Text>
+          <Text>{this.state.calculo}</Text>
                    
         </View>
       </NativeBaseProvider>
