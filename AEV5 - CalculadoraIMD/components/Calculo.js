@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Alert, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Input, Item, Center, NativeBaseProvider, Button} from 'native-base';
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {Input, NativeBaseProvider, Button} from 'native-base';
 import Resultado2 from './Resultado2';
 
 export default class Calculo extends React.Component {
@@ -32,9 +32,9 @@ export default class Calculo extends React.Component {
 
   render() {
     return (
-      <NativeBaseProvider style={styles.Container}>
+      <NativeBaseProvider>
         <View style={styles.Container}>
-          <Text style={styles.titulo}>Calculadora IMC</Text>
+        <Text style={styles.titulo}>  Datos</Text>
           <Text style={styles.font}>PESO</Text>
           <Input
             placeholder="peso"
@@ -42,6 +42,7 @@ export default class Calculo extends React.Component {
             keyboardType='numeric'
             height={10}
             width={40}
+            marginTop={-3}
             background={'white'}
             onChangeText={this.handlePes} 
           />
@@ -52,6 +53,7 @@ export default class Calculo extends React.Component {
             keyboardType='numeric'
             height={10}
             width={40}
+            marginTop={-3}
             background={'white'}
             onChangeText={this.handleAlt}
           />
@@ -59,14 +61,16 @@ export default class Calculo extends React.Component {
             onPress={this.clickCalcIMC}
             width={110}
             height={50}
-            marginTop={30}>
+            marginTop={5}>
             Calcular IMG
           </Button>
           <Text>
           {this.state.calculo>0?<Resultado2 resultado={this.state.calculo}/>:'Tipo de peso'}
           </Text>
-          <Text>{this.state.calculo}</Text>
-                   
+         {/**<Text>{this.state.calculo}</Text>**/}             
+        </View>
+        <View style={styles.sign}>
+        <Text>Created for Ivan 2n DAM</Text>
         </View>
       </NativeBaseProvider>
     );
@@ -75,21 +79,26 @@ export default class Calculo extends React.Component {
 
 const styles = StyleSheet.create({
   Container: {
+    height:340,
+    paddingHorizontal: 24,
+    paddingBottom:40,
+    backgroundColor: "white",
+  },
+  sign: {
     flex: 1,
     paddingHorizontal: 24,
+    backgroundColor: "purple",
   },
   titulo: {
-    textAlign: 'center',
+    textAlign: 'left',
     height: 40,
-    color: 'white',
+    color: 'red',
     fontSize: 22,
-    marginBottom: 20,
-    marginTop: 50,
   },
   font: {
+    marginTop: 5,
     height: 40,
-    color: 'yellow',
-    fontSize: 16,
-    marginTop: 10,
+    color: 'blue',
+    fontSize: 14,
   },
 });
